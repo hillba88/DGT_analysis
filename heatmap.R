@@ -4,11 +4,8 @@
 ## dataset and generates a heatmap 
 ## ------------------------------------------------------------
 
-# set the working directory to the R stats folder on Google Drive
-setwd("~/Google Drive/Personal/M.Sc. thesis/Data evaluation/R stats")
-
 # import entire data set, which contains both experiments
-soil.dat <- read.csv("data.csv") 
+soil.dat <- read.csv("soil_data.csv") 
 str(soil.dat)
 
 # convert ojbect from integer to factor
