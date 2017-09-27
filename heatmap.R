@@ -1,8 +1,8 @@
-## DGT Manuscript - 08.01.2017
-## ------------------------------------------------- ##
-## reading and subsetting the data to eliminate      
-## slag and crop residue incorporation treatments    
-## ------------------------------------------------- ##
+## DGT Manuscript - 08.01.2017 --------------------------------
+## ------------------------------------------------------------
+## This script conducts a correlation analysis on an soil 
+## dataset and generates a heatmap 
+## ------------------------------------------------------------
 
 # set the working directory to the R stats folder on Google Drive
 setwd("~/Google Drive/Personal/M.Sc. thesis/Data evaluation/R stats")
@@ -40,7 +40,7 @@ df_shap
 result.trans <- log(result)
 head(result.trans)
 
-## Correlation matrix with p-values. See http://goo.gl/nahmV for documentation of this function
+# Correlation matrix with p-values. 
 
 cor.prob <- function (X, dfr = nrow(X) - 2) {
   R <- cor(X, use="pairwise.complete.obs")
@@ -52,9 +52,8 @@ cor.prob <- function (X, dfr = nrow(X) - 2) {
   R
 }
 
-## Use this to dump the cor.prob output to a 4 column matrix
-## with row/column indices, correlation, and p-value.
-## See StackOverflow question: http://goo.gl/fCUcQ
+# Use this to dump the cor.prob output to a 4 column matrix
+# with row/column indices, correlation, and p-value.
 flattenSquareMatrix <- function(m) {
   if( (class(m) != "matrix") | (nrow(m) != ncol(m))) stop("Must be a square matrix.") 
   if(!identical(rownames(m), colnames(m))) stop("Row and column names must be equal.")
@@ -72,7 +71,7 @@ cor.prob(result.trans)
 flattenSquareMatrix(cor.prob(result.trans)) ##### it's not computing correlations for variables with missing data
 saveRDS(corr_matrix, file = "~/Google Drive/Personal/M.Sc. thesis/Data evaluation/R stats/corr_table.txt")
 
-## creating a correlation heatmap
+# create a correlation heatmap
 # install.packages("GGally")
 library(GGally)
 ggcorr(result.trans[, -2], 
