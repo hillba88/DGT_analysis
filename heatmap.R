@@ -18,7 +18,6 @@ analysis.dat <- soil.dat[!(soil.dat$source == "slag") &
 
 # check to make sure subsetting worked properly
 str(analysis.dat)
-analysis.dat
 
 ## -------------------------------------------------------- ##
 ## Testing assumptions and running Pearson correlation test
